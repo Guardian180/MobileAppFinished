@@ -17,6 +17,7 @@ class LevelOnePage extends StatefulWidget {
 class _LevelOneState extends State<LevelOnePage> {
   late Timer time;
   int tick = 0;
+  //My Number Pad
   List<String> numberPad = [
     '7',
     '8',
@@ -32,10 +33,13 @@ class _LevelOneState extends State<LevelOnePage> {
     '=',
     '0',
   ];
+  //First Question
   int numberA = 1;
   int numberB = 1;
   String operator = "+";
+  //Answer
   String userAnswer = '';
+  //Question Tracker
   int questionNumber = 0;
 
   final player = AudioPlayer();
@@ -59,7 +63,7 @@ class _LevelOneState extends State<LevelOnePage> {
       }));
     }
   }
-
+// For Answer Methods 
   bool isAnswerCorrect(String op, int numberA, int numberB, double answer) {
     switch (op) {
       case "+":
@@ -109,6 +113,7 @@ class _LevelOneState extends State<LevelOnePage> {
       if (questionNumber < 10) {
         questionNumber++;
         tick = 0;
+        //Question Correct Condition 
         playCongrats();
         showDialog(
           context: context,
@@ -121,8 +126,7 @@ class _LevelOneState extends State<LevelOnePage> {
           },
         );
       }
-
-      // This block should not be nested inside the previous if statement.
+      //Level Complete Conditon
       if (questionNumber == 10) {
         showDialog(
           context: context,
@@ -135,6 +139,7 @@ class _LevelOneState extends State<LevelOnePage> {
           },
         );
       }
+      //Question Wrong Condition
     } else {
       playKeepOn();
       showDialog(
